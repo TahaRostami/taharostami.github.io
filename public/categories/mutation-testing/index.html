@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Mutation Testing" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://taharostami.github.io/categories/mutation-testing/" />
+
+<title>Mutation Testing | Taha Rostami</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.eacdd8a032b8d8235da73fc619c05c438feb17b4b2c5f1fa0a2dc66f27c2366b.css" integrity="sha256-6s3YoDK42CNdpz/GGcBcQ4/rF7SyxfH6Ci3GbyfCNms=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.19cc247b79751889811451c87c2d21bca66c7652b0bf12e482a7d6908d6ffc94.js" integrity="sha256-Gcwke3l1GImBFFHIfC0hvKZsdlKwvxLkgqfWkI1v/JQ=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://taharostami.github.io/categories/mutation-testing/index.xml" title="Taha Rostami" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><img src="/logo.png" alt="Logo" /><span>Taha Rostami</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://taharostami.github.io/docs/selected-chess-games/" class="">Selcted Chess Games</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://taharostami.github.io/docs/selected-projects/" class="">Selcted Projects</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://taharostami.github.io/docs/selected-projects/academic/" class="">Academic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://taharostami.github.io/docs/selected-projects/others/" class="">Others</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Mutation Testing</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/categories/master-thesis/">Master Thesis</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/categories/mutation-testing/">Mutation Testing</a>
+          <span>6</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/code-based-mutation-testing/">code-based mutation testing</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/farm/">FaRM</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/fault-revealing-mutants/">Fault-revealing mutants</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mutation-analysis/">mutation analysis</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mutation-testing/">mutation testing</a>
+          <span>6</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/analysis-of-the-farm-article-2/">analysis of the FaRM article 2</a>
+    </h2>
+    
+  <h5>June 9, 2021</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/mutation-testing/">Mutation Testing</a>, 
+      <a href="/categories/master-thesis/">Master Thesis</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/code-based-mutation-testing/">code-based mutation testing</a>, 
+      <a href="/tags/mutation-testing/">mutation testing</a>, 
+      <a href="/tags/mutation-analysis/">mutation analysis</a>, 
+      <a href="/tags/fault-revealing-mutants/">Fault-revealing mutants</a>, 
+      <a href="/tags/farm/">FaRM</a>
+  </div>
+  
+
+
+
+
+    <p>Columns With Just One Value#We design an simple experiment to check existence or not existence of columns with just one value as follows:
+The experiment code...import numpy as np import pandas as pd import datetime import sys import warnings import Config.config as config if not sys.warnoptions:warnings.simplefilter(&#34;ignore&#34;) cols = list(pd.read_csv(config.original_codeflaws_ds_provided_by_article_filename, nrows =1)) d1=datetime.datetime.now() X=pd.read_csv(config.original_codeflaws_ds_provided_by_article_filename,header=0,dtype=np.float16, usecols =[i for i in cols if i != &#39;projectID&#39; and i!
+        <a href="/posts/analysis-of-the-farm-article-2/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/analysis-of-the-farm-article/">Analysis of the FaRM article</a>
+    </h2>
+    
+  <h5>June 6, 2021</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/mutation-testing/">Mutation Testing</a>, 
+      <a href="/categories/master-thesis/">Master Thesis</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/code-based-mutation-testing/">code-based mutation testing</a>, 
+      <a href="/tags/mutation-testing/">mutation testing</a>, 
+      <a href="/tags/mutation-analysis/">mutation analysis</a>, 
+      <a href="/tags/fault-revealing-mutants/">Fault-revealing mutants</a>, 
+      <a href="/tags/farm/">FaRM</a>
+  </div>
+  
+
+
+
+
+    <p>Removing Duplicates#We design an experiment two check duplicates instancses in the Codeflaws dataset. The experiment code as follows:
+The experiment code...import numpy as np import pandas as pd import datetime import sys import warnings if not sys.warnoptions:warnings.simplefilter(&#34;ignore&#34;) cols = list(pd.read_csv(CODE_FLAWS_PATH, nrows =1)) d1=datetime.datetime.now() X=pd.read_csv(CODE_FLAWS_PATH,header=0,dtype=np.float16, usecols =[i for i in cols if i != &#39;projectID&#39; and i!=&#39;mutantID&#39;]) #split dataset into two disjoint fault-rev and not-fault-rev mutants fault_rev=X[X[&#39;coupling-weight&#39;]==1] not_fault_rev=X[X[&#39;coupling-weight&#39;]!
+        <a href="/posts/analysis-of-the-farm-article/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/mutationtesting/">Introduction to Code-based Mutation Testing</a>
+    </h2>
+    
+  <h5>June 5, 2021</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/mutation-testing/">Mutation Testing</a>, 
+      <a href="/categories/master-thesis/">Master Thesis</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/code-based-mutation-testing/">code-based mutation testing</a>, 
+      <a href="/tags/mutation-testing/">mutation testing</a>, 
+      <a href="/tags/mutation-analysis/">mutation analysis</a>
+  </div>
+  
+
+
+
+
+    <p>preface#A piece of software may have bugs and the presence of bugs may cause problems. So Software Industry uses some methods to reduce the risk of existence of bugs. One of this method is Software Testing which is a process of evaluating a software system to ensure its correct and optimal behavior or to find possible errors in it. One of the most effective techniques in Software Testing is Mutation Testing.
+        <a href="/posts/mutationtesting/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/reimplementation-of-the-farm-article/">Reimplementation of the FaRM article</a>
+    </h2>
+    
+  <h5>June 5, 2021</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/mutation-testing/">Mutation Testing</a>, 
+      <a href="/categories/master-thesis/">Master Thesis</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/mutation-testing/">mutation testing</a>, 
+      <a href="/tags/mutation-analysis/">mutation analysis</a>, 
+      <a href="/tags/farm/">FaRM</a>, 
+      <a href="/tags/fault-revealing-mutants/">Fault-revealing mutants</a>
+  </div>
+  
+
+
+
+
+    <p>Some Notes About FaRM article#Fault Revealing Mutant Selection Prblem Definition#Thierry Titcheu Chekam et. al. defined a fault revealing mutant selection problem as:
+Given: A set of mutants M for program P.
+Problem: Subset selection. Select a subset of mutants, S ∈ M, such that F (S) = F (M) and (∀m ∈ S), (F (S − {m}) = F (M)).
+S represents a subset of M; F (X) represents the number of faults in P that are revealed by the test suites that kill all the mutants of the set X.
+        <a href="/posts/reimplementation-of-the-farm-article/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/machine-learning-notes/">Machine Learning Notes</a>
+    </h2>
+    
+
+
+  
+  <div>
+    
+      <a href="/categories/mutation-testing/">Mutation Testing</a>, 
+      <a href="/categories/master-thesis/">Master Thesis</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/code-based-mutation-testing/">code-based mutation testing</a>, 
+      <a href="/tags/mutation-testing/">mutation testing</a>, 
+      <a href="/tags/mutation-analysis/">mutation analysis</a>, 
+      <a href="/tags/fault-revealing-mutants/">Fault-revealing mutants</a>, 
+      <a href="/tags/farm/">FaRM</a>
+  </div>
+  
+
+
+
+
+    <p>Knowledge Base#Evaluation Metrics for Imbalanced Classification#mermaid.initialize({"flowchart": {"useMaxWidth":true},"theme": "default"})graph LR;metric[metrics]--thr[Threshold Metrics];thr[Threshold Metrics]--bl[Accuracy, Error];thr[Threshold Metrics]--imbl[Sensitivity, Specificity, G-Mean ];thr[Threshold Metrics]--precrecall[Precision, Recall, F-Measure, Fbeta-Measure ];metric[metrics]--rnk[Ranking Metrics];rnk[Ranking Metrics]--met[ROC Curve, ROC AUC, PR AUC];metric[metrics]--pr[Probability Metrics.];pr[Probability Metrics.]--met2[cross-entropy, LogLoss, BrierScore, BrierSkillScore];Tour of Evaluation Metrics for Imbalanced Classification
+Undersampling for Imbalanced Classification#graph LR;undersampling_algo[Undersampling Algorithms for Imbalanced Classification]--keep_exmples[Methods that Select Examples to Keep];keep_exmples[Methods that Select Examples to Keep]--near_miss[Near Miss Undersampling];keep_exmples[Methods that Select Examples to Keep]--cnn[Condensed Nearest Neighbor Rule for Undersampling];undersampling_algo[Undersampling Algorithms for Imbalanced Classification]--del_exmples[Methods that Select Examples to Delete];del_exmples[Methods that Select Examples to Delete]--tomek_links[Tomek Links for Undersampling];del_exmples[Methods that Select Examples to Delete]--edited_nn[Edited Nearest Neighbors Rule for Undersampling];undersampling_algo[Undersampling Algorithms for Imbalanced Classification]--comb[Methods that Select Examples to Delete];comb[Methods that Select Examples to Delete]--one_side[One-Sided Selection for Undersampling];comb[Methods that Select Examples to Delete]--nc[Neighborhood Cleaning Rule for Undersampling];Undersampling Algorithms for Imbalanced Classification
+        <a href="/posts/machine-learning-notes/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/machine-learning-notes-2/">machine learning notes 2</a>
+    </h2>
+    
+
+
+  
+  <div>
+    
+      <a href="/categories/mutation-testing/">Mutation Testing</a>, 
+      <a href="/categories/master-thesis/">Master Thesis</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/code-based-mutation-testing/">code-based mutation testing</a>, 
+      <a href="/tags/mutation-testing/">mutation testing</a>, 
+      <a href="/tags/mutation-analysis/">mutation analysis</a>, 
+      <a href="/tags/fault-revealing-mutants/">Fault-revealing mutants</a>, 
+      <a href="/tags/farm/">FaRM</a>
+  </div>
+  
+
+
+
+
+    <p>Linear dimensionalilty reduction algorithms strengths and weaknesses#A number of supervised and unsupervised linear dimensionality reduction frameworks have been designed, such as Principal Component Analysis (PCA), Independent Component Analysis, Linear Discriminant Analysis, and others. These algorithms define specific rubrics to choose an “interesting” linear projection of the data. These methods can be powerful, but often miss important non-linear structure in the data.
+Statistics for Filter-Based Feature Selection Methods#Numerical Input, Categorical Output#  ANOVA correlation coefficient (linear).
+        <a href="/posts/machine-learning-notes-2/">...</a>
+      
+    </p>
+  </article>
+  
+
+  
+
+
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/categories/master-thesis/">Master Thesis</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/categories/mutation-testing/">Mutation Testing</a>
+          <span>6</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/code-based-mutation-testing/">code-based mutation testing</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/farm/">FaRM</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/fault-revealing-mutants/">Fault-revealing mutants</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mutation-analysis/">mutation analysis</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mutation-testing/">mutation testing</a>
+          <span>6</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

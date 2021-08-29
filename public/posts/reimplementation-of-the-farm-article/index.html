@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Some Notes About FaRM article#Fault Revealing Mutant Selection Prblem Definition#Thierry Titcheu Chekam et. al. defined a fault revealing mutant selection problem as:
+Given: A set of mutants M for program P.
+Problem: Subset selection. Select a subset of mutants, S ∈ M, such that F (S) = F (M) and (∀m ∈ S), (F (S − {m}) = F (M)).
+S represents a subset of M; F (X) represents the number of faults in P that are revealed by the test suites that kill all the mutants of the set X.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Reimplementation of the FaRM article" />
+<meta property="og:description" content="Some Notes About FaRM article#Fault Revealing Mutant Selection Prblem Definition#Thierry Titcheu Chekam et. al. defined a fault revealing mutant selection problem as:
+Given: A set of mutants M for program P.
+Problem: Subset selection. Select a subset of mutants, S ∈ M, such that F (S) = F (M) and (∀m ∈ S), (F (S − {m}) = F (M)).
+S represents a subset of M; F (X) represents the number of faults in P that are revealed by the test suites that kill all the mutants of the set X." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taharostami.github.io/posts/reimplementation-of-the-farm-article/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-05T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-06-05T00:00:00&#43;00:00" />
+
+<title>Reimplementation of the FaRM article | Taha Rostami</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.eacdd8a032b8d8235da73fc619c05c438feb17b4b2c5f1fa0a2dc66f27c2366b.css" integrity="sha256-6s3YoDK42CNdpz/GGcBcQ4/rF7SyxfH6Ci3GbyfCNms=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.19cc247b79751889811451c87c2d21bca66c7652b0bf12e482a7d6908d6ffc94.js" integrity="sha256-Gcwke3l1GImBFFHIfC0hvKZsdlKwvxLkgqfWkI1v/JQ=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><img src="/logo.png" alt="Logo" /><span>Taha Rostami</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://taharostami.github.io/docs/selected-chess-games/" class="">Selcted Chess Games</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://taharostami.github.io/docs/selected-projects/" class="">Selcted Projects</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://taharostami.github.io/docs/selected-projects/academic/" class="">Academic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://taharostami.github.io/docs/selected-projects/others/" class="">Others</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Reimplementation of the FaRM article</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#fault-revealing-mutant-selection-prblem-definition">Fault Revealing Mutant Selection Prblem Definition</a></li>
+    <li><a href="#their-implementaion">Their Implementaion</a></li>
+    <li><a href="#dataset-tree-structure">Dataset Tree Structure</a></li>
+    <li><a href="#code-of-the-reimplementaion-without-top-x">Code of the reimplementaion without top %x</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/reimplementation-of-the-farm-article/">Reimplementation of the FaRM article</a>
+  </h1>
+  
+  <h5>June 5, 2021</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/mutation-testing/">Mutation Testing</a>, 
+      <a href="/categories/master-thesis/">Master Thesis</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/mutation-testing/">mutation testing</a>, 
+      <a href="/tags/mutation-analysis/">mutation analysis</a>, 
+      <a href="/tags/farm/">FaRM</a>, 
+      <a href="/tags/fault-revealing-mutants/">Fault-revealing mutants</a>
+  </div>
+  
+
+
+
+<h1 id="some-notes-about-farm-article">
+  Some Notes About FaRM article
+  <a class="anchor" href="#some-notes-about-farm-article">#</a>
+</h1>
+<h2 id="fault-revealing-mutant-selection-prblem-definition">
+  Fault Revealing Mutant Selection Prblem Definition
+  <a class="anchor" href="#fault-revealing-mutant-selection-prblem-definition">#</a>
+</h2>
+<p><a href="https://link.springer.com/article/10.1007/s10664-019-09778-7">Thierry Titcheu Chekam et. al.</a> defined a fault revealing mutant selection problem as:</p>
+<p><strong>Given:</strong> A set of mutants M for program P.</p>
+<p><strong>Problem:</strong> Subset selection. Select a subset of mutants, S ∈ M, such that F (S) = F (M)
+and (∀m ∈ S), (F (S − {m}) = F (M)).</p>
+<p>S represents a subset of M; F (X) represents the number of faults in P that are revealed
+by the test suites that kill all the mutants of the set X. In practice, the challenge is to approximate well S, statically and prior to any test execution, by finding a relatively good trade-off
+between the number of selected mutants (to minimise) and the number of faults revealed by
+their killing (to maximize).</p>
+<h2 id="their-implementaion">
+  Their Implementaion
+  <a class="anchor" href="#their-implementaion">#</a>
+</h2>
+<p>For this purpose, they used C programs prepered in the <a href="https://codeflaws.github.io/">Codeflaws dataset</a>.
+Codeflaws tree structure as follows:</p>
+<ol>
+<li>Number of problems defined for online programming competition which we called each problem as project (problem = project).</li>
+<li>Number of problem might solved with different programmers, this means we have one or more implementations for each problem. we called each of this program as implementaion (program = implementaion).</li>
+<li>for each implementaion we have two versions, one is sumbited program whcih rejected because of existence of bug(s) in it. another is submited program which accepted because of the test suite did not find any bug in it. In the absence of the oracles for the programs, they use accepted one behavior as expected behavior and all of their mutation performed on the rejected one.</li>
+</ol>
+<p>They produce Mutants for each C programs using <a href="https://github.com/thierry-tct/mart">Mart</a>. Mart get a C program, and perform mutation on the <a href="https://llvm.org/">llvm</a> file of the C program. In particular they said that all of their analysis are based on llvm codes (not C codes).</p>
+<p>Codeflaws also contains some test cases for each problem, but as they might not be strong enough, they also produce strong test inputs for each of the problem using <a href="https://klee.github.io/">KLEE</a>.</p>
+<p>They remove equivalent mutants that identified by the <a href="https://ieeexplore.ieee.org/abstract/document/7882714">TCE</a>.</p>
+<p>After that, they execute mutation analysis process and using the matrix execution calculate utility for each of the mutants. they consider  utility of the mutant as #number of test cases that kill the mutant and reveal faults / #number of test cases that kill the mutants. If mutant did not kill by any test cases they consider it as equivalent mutant and set it&rsquo;s utility as -1. They also remove from the dataset, trivial mutants which are mutants that many test cases can kill them.</p>
+<p>For reminder of the mutants, they extract feature values. and then made the dataset <a href="https://mutationtesting.uni.lu/farm/">available</a>.</p>
+<p>Note their experiment is performed on the mention dataset (without any change). According our communication with them, they verified that the following pseudocode is what they perform in experiment 1 of their work:</p>
+<pre><code>01. dataset &lt;- load Codeflaws dataset
+02. dataset['coupling-weight'] &lt;- 'fault-rev' if dataset['coupling-weight']=1 else 'not-fault-rev'
+03. parts &lt;- randomly splitting the dataset into 10 parts such that all implementations of the same problem appear exactly in one part
+04. for (each part in parts)
+05.    testx,y &lt;- part
+06.    Trainx,y &lt;- parts \ part
+07.    trainx,y &lt;- Oversample(trainx,y)
+08.    model &lt;-StochasticGradientBoostingClassifier(depth=5,tree=1000).FitModel(trainx,y)
+09.    preds &lt;- model.PredProb(testx,y).sort()
+10.    select 05% top from preds and then report precision, recall, f1
+11.    select 10% top from preds and then report precision, recall, f1
+12.    select 20% top from preds and then report precision, recall, f1
+13.    report AUC
+</code></pre><p>They are consider confusin matrix as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:center">Predicted fault-rev</th>
+<th style="text-align:center">Predicted not fault-rev</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Actually fault-rev</td>
+<td style="text-align:center">TP</td>
+<td style="text-align:center">FN</td>
+</tr>
+<tr>
+<td style="text-align:left">Actually not fault-rev</td>
+<td style="text-align:center">FP</td>
+<td style="text-align:center">TN</td>
+</tr>
+</tbody>
+</table>
+<p>according to the above table we know:</p>
+
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \(
+  \boxed{\text{Precision }=\frac {number {\space} of {\space}fault-rev {\space}mutants{\space} which{\space} predicted{\space} as {\space} fault-rev} {number {\space} of {\space}mutants{\space} predicted{\space} as{\space} fault-rev}}\)
+</span>
+
+<span>
+  \(
+  \boxed{\text{Recall }=\frac {number {\space} of {\space}fault-rev {\space}mutants{\space} which{\space} predicted{\space} as {\space} fault-rev} {number {\space} of {\space}actual{\space} fault-rev{\space} mutants}}\)
+</span>
+
+<p>They report their results of the experiment 1 as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">AUC:62.04%</th>
+<th style="text-align:center">Precision</th>
+<th style="text-align:center">Recall</th>
+<th style="text-align:center">F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">5% top mutants</td>
+<td style="text-align:center">5.7%</td>
+<td style="text-align:center">12.8%</td>
+<td style="text-align:center">7.8%</td>
+</tr>
+<tr>
+<td style="text-align:center">10% to mutants</td>
+<td style="text-align:center">4.9%</td>
+<td style="text-align:center">22%</td>
+<td style="text-align:center">8%</td>
+</tr>
+<tr>
+<td style="text-align:center">20% to mutants</td>
+<td style="text-align:center">3.9%</td>
+<td style="text-align:center">35.1%</td>
+<td style="text-align:center">7%</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="book-hint ">
+  <strong>NOTE</strong><br>
+In this application recall is seem more appealing that precision.
+</blockquote>
+
+<h2 id="dataset-tree-structure">
+  Dataset Tree Structure
+  <a class="anchor" href="#dataset-tree-structure">#</a>
+</h2>
+<pre><code> ds
+  └── project-i
+              └── implementaion-j
+                                └── line-k
+                                         └── mutant-M1
+
+</code></pre>
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Dataset Tree Structure in more details</span>
+      <span>...</span>
+    </div>
+    <input type="checkbox" class="hidden" />
+    <div class="book-expand-content markdown-inner">
+      <pre><code> ds
+ ├── project-1
+ │   ├── implementaion-1
+ │   │                 ├── line-0
+ │   │                 │         ├── mutant-1
+ │   │                 │         ├── mutant-2
+ │   │                 │         ...
+ │   │                 │         └── mutant-M1
+ │   │                 │
+ │   │                 ├── line-1
+ │   │                 │         ├── mutant-M1+1
+ │   │                 │         ├── mutant-M1+2
+ │   │                 │         ...
+ │   │                 │         └── mutant-M2
+ │   │                ...
+ │   │                 │
+ │   │                 └── line-L1
+ │   │                          ├── mutant-M2
+ │   │                          ├── mutant-M2+1
+ │   │                          │...
+ │   │                          └── mutant-M3
+ │   ├── implementaion-2
+ │   │                 ├── line-0
+ │   │                 │         ├── mutant-1
+ │   │                 │         ├── mutant-2
+ │   │                 │         ...
+ │   │                 │         └── mutant-M4
+ │   │                 │
+ │   │                 ├── line-1
+ │   │                 │         ├── mutant-M4+1
+ │   │                 │         ├── mutant-M4+2
+ │   │                 │         ...
+ │   │                 │         └── mutant-M5
+ │   │                ...
+ │   │                 │
+ │   │                 └── line-L2
+ │   │                          ├── mutant-M5
+ │   │                          ├── mutant-M5+1
+ │   │                          │...
+ │   │                          └── mutant-M6
+ │   │
+ │   │
+ │  ...
+ │   │
+ │   └── implementaion-I1
+ │                     ├── line-0
+ │                     │         ├── mutant-1
+ │                     │         ├── mutant-2
+ │                     │         ...
+ │                     │         └── mutant-MX1
+ │                     │
+ │                     ├── line-1
+ │                     │         ├── mutant-MX1+1
+ │                     │         ├── mutant-MX1+2
+ │                     │         ...
+ │                     │         └── mutant-MX2
+ │                    ...
+ │                     │
+ │                     └── line-L2
+ │                              ├── mutant-MX3
+ │                              ├── mutant-MX3+1
+ │                              │...
+ │                              └── mutant-MX4
+...
+ └── project-N
+     ├── implementaion-1
+     │                 ├── line-0
+     │                 │         ├── mutant-1
+     │                 │         ├── mutant-2
+     │                 │         ...
+     │                 │         └── mutant-M'1
+     │                 │
+     │                 ├── line-1
+     │                 │         ├── mutant-M'1+1
+     │                 │         ├── mutant-M'1+2
+     │                 │         ...
+     │                 │         └── mutant-M'2
+     │                ...
+     │                 │
+     │                 └── line-L1
+     │                          ├── mutant-M'2
+     │                          ├── mutant-M'2+1
+     │                          │...
+     │                          └── mutant-M'3
+     ├── implementaion-2
+     │                 ├── line-0
+     │                 │         ├── mutant-1
+     │                 │         ├── mutant-2
+     │                 │         ...
+     │                 │         └── mutant-M'4
+     │                 │
+     │                 ├── line-1
+     │                 │         ├── mutant-M'4+1
+     │                 │         ├── mutant-M'4+2
+     │                 │         ...
+     │                 │         └── mutant-M'5
+     │                ...
+     │                 │
+     │                 └── line-L2
+     │                          ├── mutant-M'5
+     │                          ├── mutant-M'5+1
+     │                          │...
+     │                          └── mutant-M'6
+     │
+     │
+    ...
+     │
+     └── implementaion-I'1
+                       ├── line-0
+                       │         ├── mutant-1
+                       │         ├── mutant-2
+                       │         ...
+                       │         └── mutant-MX'1
+                       │
+                       ├── line-1
+                       │         ├── mutant-MX'1+1
+                       │         ├── mutant-MX'1+2
+                       │         ...
+                       │         └── mutant-MX'2
+                      ...
+                       │
+                       └── line-L2
+                                ├── mutant-MX'3
+                                ├── mutant-MX'3+1
+                                │...
+                                └── mutant-MX'4
+</code></pre>
+    </div>
+  </label>
+</div>
+
+<h2 id="code-of-the-reimplementaion-without-top-x">
+  Code of the reimplementaion without top %x
+  <a class="anchor" href="#code-of-the-reimplementaion-without-top-x">#</a>
+</h2>
+
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Code of the reimplementaion</span>
+      <span>...</span>
+    </div>
+    <input type="checkbox" class="hidden" />
+    <div class="book-expand-content markdown-inner">
+      <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> GroupKFold
+<span style="color:#f92672">from</span> sklearn.ensemble <span style="color:#f92672">import</span> GradientBoostingClassifier
+<span style="color:#f92672">from</span> sklearn <span style="color:#f92672">import</span> metrics
+<span style="color:#f92672">from</span> imblearn.over_sampling <span style="color:#f92672">import</span> RandomOverSampler
+<span style="color:#f92672">import</span> Config.config <span style="color:#f92672">as</span> config
+
+<span style="color:#66d9ef">with</span> open(config<span style="color:#f92672">.</span>original_codeflaws_ds_provided_by_article_filename,<span style="color:#e6db74">&#34;r&#34;</span>)\
+        <span style="color:#66d9ef">as</span> f: columns <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>strip(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)
+
+
+prj_names<span style="color:#f92672">=</span>list(set(map(<span style="color:#66d9ef">lambda</span> impl_name: impl_name[:impl_name<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;-bug&#39;</span>)] ,os<span style="color:#f92672">.</span>listdir(config<span style="color:#f92672">.</span>original_codeflaws_matrices_dir_provided_bt_article_filename))))
+prj_names_encode_value_dict<span style="color:#f92672">=</span> { prj_names[i]:i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(prj_names))}
+
+
+X<span style="color:#f92672">=</span>pd<span style="color:#f92672">.</span>read_csv(config<span style="color:#f92672">.</span>original_codeflaws_ds_provided_by_article_filename,
+               nrows<span style="color:#f92672">=</span><span style="color:#ae81ff">40000</span>,header<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>float16,
+               usecols <span style="color:#f92672">=</span>[i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> columns <span style="color:#66d9ef">if</span> i<span style="color:#f92672">!=</span><span style="color:#e6db74">&#39;mutantID&#39;</span>],
+               converters<span style="color:#f92672">=</span>
+               {<span style="color:#e6db74">&#39;projectID&#39;</span>:<span style="color:#66d9ef">lambda</span> impl_name:prj_names_encode_value_dict[impl_name[:impl_name<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;-bug&#39;</span>)]]})
+
+
+y <span style="color:#f92672">=</span> X[<span style="color:#e6db74">&#39;coupling-weight&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> w:<span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> w<span style="color:#f92672">==</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0</span>)
+X<span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#39;coupling-weight&#39;</span>,axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,inplace<span style="color:#f92672">=</span>True)
+
+groups<span style="color:#f92672">=</span>X[<span style="color:#e6db74">&#39;projectID&#39;</span>]
+X<span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#39;projectID&#39;</span>,axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,inplace<span style="color:#f92672">=</span>True)
+
+group_kfold <span style="color:#f92672">=</span> GroupKFold(n_splits<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+
+
+
+auc_s<span style="color:#f92672">=</span>[]
+
+<span style="color:#66d9ef">for</span> train_index, test_index <span style="color:#f92672">in</span> group_kfold<span style="color:#f92672">.</span>split(X, y, groups):
+
+    np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>shuffle(train_index)
+
+    X_train, X_test <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>loc[train_index], X<span style="color:#f92672">.</span>loc[test_index]
+    y_train, y_test <span style="color:#f92672">=</span> y<span style="color:#f92672">.</span>loc[train_index], y<span style="color:#f92672">.</span>loc[test_index]
+
+    <span style="color:#66d9ef">try</span>:
+      oversample <span style="color:#f92672">=</span> RandomOverSampler(sampling_strategy<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+      X_train_resample, y_train_resample <span style="color:#f92672">=</span> oversample<span style="color:#f92672">.</span>fit_resample(X_train, y_train)
+
+      clf <span style="color:#f92672">=</span> GradientBoostingClassifier(n_estimators<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>, learning_rate<span style="color:#f92672">=</span><span style="color:#ae81ff">1.0</span>,subsample<span style="color:#f92672">=</span><span style="color:#ae81ff">0.9</span>,max_depth<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)\
+        <span style="color:#f92672">.</span>fit(X_train_resample, y_train_resample)
+
+      y_preds_proba<span style="color:#f92672">=</span>clf<span style="color:#f92672">.</span>predict_proba(X_test)[:,<span style="color:#ae81ff">1</span>]
+      auc<span style="color:#f92672">=</span>metrics<span style="color:#f92672">.</span>roc_auc_score(y_test,y_preds_proba)
+      auc_s<span style="color:#f92672">.</span>append(auc)
+      <span style="color:#66d9ef">print</span>(auc)
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;An exception occurred: &#34;</span>, e)
+
+os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">&#39;clear&#39;</span> <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>name <span style="color:#f92672">==</span><span style="color:#e6db74">&#39;posix&#39;</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;cls&#39;</span>)
+<span style="color:#66d9ef">print</span>(auc_s)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34; min: {np.min(auc_s)}, mean: {np.mean(auc_s)}, max: {np.max(auc_s)}, stdev: {np.std(auc_s)}&#34;</span>)
+
+
+</code></pre></div>
+    </div>
+  </label>
+</div>
+
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#fault-revealing-mutant-selection-prblem-definition">Fault Revealing Mutant Selection Prblem Definition</a></li>
+    <li><a href="#their-implementaion">Their Implementaion</a></li>
+    <li><a href="#dataset-tree-structure">Dataset Tree Structure</a></li>
+    <li><a href="#code-of-the-reimplementaion-without-top-x">Code of the reimplementaion without top %x</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
