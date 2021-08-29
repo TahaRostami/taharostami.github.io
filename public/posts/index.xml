@@ -1,72 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Blog on Taha Rostami</title>
-    <link>http://taharostami.github.io/posts/</link>
-    <description>Recent content in Blog on Taha Rostami</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 09 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://taharostami.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>analysis of the FaRM article 2</title>
-      <link>http://taharostami.github.io/posts/analysis-of-the-farm-article-2/</link>
-      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://taharostami.github.io/posts/analysis-of-the-farm-article-2/</guid>
-      <description>Columns With Just One Value#We design an simple experiment to check existence or not existence of columns with just one value as follows:
-The experiment code...import numpy as np import pandas as pd import datetime import sys import warnings import Config.config as config if not sys.warnoptions:warnings.simplefilter(&amp;#34;ignore&amp;#34;) cols = list(pd.read_csv(config.original_codeflaws_ds_provided_by_article_filename, nrows =1)) d1=datetime.datetime.now() X=pd.read_csv(config.original_codeflaws_ds_provided_by_article_filename,header=0,dtype=np.float16, usecols =[i for i in cols if i != &amp;#39;projectID&amp;#39; and i!</description>
-    </item>
-    
-    <item>
-      <title>Analysis of the FaRM article</title>
-      <link>http://taharostami.github.io/posts/analysis-of-the-farm-article/</link>
-      <pubDate>Sun, 06 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://taharostami.github.io/posts/analysis-of-the-farm-article/</guid>
-      <description>Removing Duplicates#We design an experiment two check duplicates instancses in the Codeflaws dataset. The experiment code as follows:
-The experiment code...import numpy as np import pandas as pd import datetime import sys import warnings if not sys.warnoptions:warnings.simplefilter(&amp;#34;ignore&amp;#34;) cols = list(pd.read_csv(CODE_FLAWS_PATH, nrows =1)) d1=datetime.datetime.now() X=pd.read_csv(CODE_FLAWS_PATH,header=0,dtype=np.float16, usecols =[i for i in cols if i != &amp;#39;projectID&amp;#39; and i!=&amp;#39;mutantID&amp;#39;]) #split dataset into two disjoint fault-rev and not-fault-rev mutants fault_rev=X[X[&amp;#39;coupling-weight&amp;#39;]==1] not_fault_rev=X[X[&amp;#39;coupling-weight&amp;#39;]!</description>
-    </item>
-    
-    <item>
-      <title>Introduction to Code-based Mutation Testing</title>
-      <link>http://taharostami.github.io/posts/mutationtesting/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://taharostami.github.io/posts/mutationtesting/</guid>
-      <description>preface#A piece of software may have bugs and the presence of bugs may cause problems. So Software Industry uses some methods to reduce the risk of existence of bugs. One of this method is Software Testing which is a process of evaluating a software system to ensure its correct and optimal behavior or to find possible errors in it. One of the most effective techniques in Software Testing is Mutation Testing.</description>
-    </item>
-    
-    <item>
-      <title>Reimplementation of the FaRM article</title>
-      <link>http://taharostami.github.io/posts/reimplementation-of-the-farm-article/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://taharostami.github.io/posts/reimplementation-of-the-farm-article/</guid>
-      <description>Some Notes About FaRM article#Fault Revealing Mutant Selection Prblem Definition#Thierry Titcheu Chekam et. al. defined a fault revealing mutant selection problem as:
-Given: A set of mutants M for program P.
-Problem: Subset selection. Select a subset of mutants, S ∈ M, such that F (S) = F (M) and (∀m ∈ S), (F (S − {m}) = F (M)).
-S represents a subset of M; F (X) represents the number of faults in P that are revealed by the test suites that kill all the mutants of the set X.</description>
-    </item>
-    
-    <item>
-      <title>Machine Learning Notes</title>
-      <link>http://taharostami.github.io/posts/machine-learning-notes/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://taharostami.github.io/posts/machine-learning-notes/</guid>
-      <description>Knowledge Base#Evaluation Metrics for Imbalanced Classification#mermaid.initialize({&#34;flowchart&#34;: {&#34;useMaxWidth&#34;:true},&#34;theme&#34;: &#34;default&#34;})graph LR;metric[metrics]--thr[Threshold Metrics];thr[Threshold Metrics]--bl[Accuracy, Error];thr[Threshold Metrics]--imbl[Sensitivity, Specificity, G-Mean ];thr[Threshold Metrics]--precrecall[Precision, Recall, F-Measure, Fbeta-Measure ];metric[metrics]--rnk[Ranking Metrics];rnk[Ranking Metrics]--met[ROC Curve, ROC AUC, PR AUC];metric[metrics]--pr[Probability Metrics.];pr[Probability Metrics.]--met2[cross-entropy, LogLoss, BrierScore, BrierSkillScore];Tour of Evaluation Metrics for Imbalanced Classification
-Undersampling for Imbalanced Classification#graph LR;undersampling_algo[Undersampling Algorithms for Imbalanced Classification]--keep_exmples[Methods that Select Examples to Keep];keep_exmples[Methods that Select Examples to Keep]--near_miss[Near Miss Undersampling];keep_exmples[Methods that Select Examples to Keep]--cnn[Condensed Nearest Neighbor Rule for Undersampling];undersampling_algo[Undersampling Algorithms for Imbalanced Classification]--del_exmples[Methods that Select Examples to Delete];del_exmples[Methods that Select Examples to Delete]--tomek_links[Tomek Links for Undersampling];del_exmples[Methods that Select Examples to Delete]--edited_nn[Edited Nearest Neighbors Rule for Undersampling];undersampling_algo[Undersampling Algorithms for Imbalanced Classification]--comb[Methods that Select Examples to Delete];comb[Methods that Select Examples to Delete]--one_side[One-Sided Selection for Undersampling];comb[Methods that Select Examples to Delete]--nc[Neighborhood Cleaning Rule for Undersampling];Undersampling Algorithms for Imbalanced Classification</description>
-    </item>
-    
-    <item>
-      <title>machine learning notes 2</title>
-      <link>http://taharostami.github.io/posts/machine-learning-notes-2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://taharostami.github.io/posts/machine-learning-notes-2/</guid>
-      <description>Linear dimensionalilty reduction algorithms strengths and weaknesses#A number of supervised and unsupervised linear dimensionality reduction frameworks have been designed, such as Principal Component Analysis (PCA), Independent Component Analysis, Linear Discriminant Analysis, and others. These algorithms define specific rubrics to choose an “interesting” linear projection of the data. These methods can be powerful, but often miss important non-linear structure in the data.
-Statistics for Filter-Based Feature Selection Methods#Numerical Input, Categorical Output#  ANOVA correlation coefficient (linear).</description>
-    </item>
-    
-  </channel>
-</rss>

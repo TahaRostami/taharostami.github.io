@@ -1,438 +1,0 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Knowledge Base#Evaluation Metrics for Imbalanced Classification#mermaid.initialize({&#34;flowchart&#34;: {&#34;useMaxWidth&#34;:true},&#34;theme&#34;: &#34;default&#34;})graph LR;metric[metrics]--thr[Threshold Metrics];thr[Threshold Metrics]--bl[Accuracy, Error];thr[Threshold Metrics]--imbl[Sensitivity, Specificity, G-Mean ];thr[Threshold Metrics]--precrecall[Precision, Recall, F-Measure, Fbeta-Measure ];metric[metrics]--rnk[Ranking Metrics];rnk[Ranking Metrics]--met[ROC Curve, ROC AUC, PR AUC];metric[metrics]--pr[Probability Metrics.];pr[Probability Metrics.]--met2[cross-entropy, LogLoss, BrierScore, BrierSkillScore];Tour of Evaluation Metrics for Imbalanced Classification
-Undersampling for Imbalanced Classification#graph LR;undersampling_algo[Undersampling Algorithms for Imbalanced Classification]--keep_exmples[Methods that Select Examples to Keep];keep_exmples[Methods that Select Examples to Keep]--near_miss[Near Miss Undersampling];keep_exmples[Methods that Select Examples to Keep]--cnn[Condensed Nearest Neighbor Rule for Undersampling];undersampling_algo[Undersampling Algorithms for Imbalanced Classification]--del_exmples[Methods that Select Examples to Delete];del_exmples[Methods that Select Examples to Delete]--tomek_links[Tomek Links for Undersampling];del_exmples[Methods that Select Examples to Delete]--edited_nn[Edited Nearest Neighbors Rule for Undersampling];undersampling_algo[Undersampling Algorithms for Imbalanced Classification]--comb[Methods that Select Examples to Delete];comb[Methods that Select Examples to Delete]--one_side[One-Sided Selection for Undersampling];comb[Methods that Select Examples to Delete]--nc[Neighborhood Cleaning Rule for Undersampling];Undersampling Algorithms for Imbalanced Classification">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Machine Learning Notes" />
-<meta property="og:description" content="Knowledge Base#Evaluation Metrics for Imbalanced Classification#mermaid.initialize({&#34;flowchart&#34;: {&#34;useMaxWidth&#34;:true},&#34;theme&#34;: &#34;default&#34;})graph LR;metric[metrics]--thr[Threshold Metrics];thr[Threshold Metrics]--bl[Accuracy, Error];thr[Threshold Metrics]--imbl[Sensitivity, Specificity, G-Mean ];thr[Threshold Metrics]--precrecall[Precision, Recall, F-Measure, Fbeta-Measure ];metric[metrics]--rnk[Ranking Metrics];rnk[Ranking Metrics]--met[ROC Curve, ROC AUC, PR AUC];metric[metrics]--pr[Probability Metrics.];pr[Probability Metrics.]--met2[cross-entropy, LogLoss, BrierScore, BrierSkillScore];Tour of Evaluation Metrics for Imbalanced Classification
-Undersampling for Imbalanced Classification#graph LR;undersampling_algo[Undersampling Algorithms for Imbalanced Classification]--keep_exmples[Methods that Select Examples to Keep];keep_exmples[Methods that Select Examples to Keep]--near_miss[Near Miss Undersampling];keep_exmples[Methods that Select Examples to Keep]--cnn[Condensed Nearest Neighbor Rule for Undersampling];undersampling_algo[Undersampling Algorithms for Imbalanced Classification]--del_exmples[Methods that Select Examples to Delete];del_exmples[Methods that Select Examples to Delete]--tomek_links[Tomek Links for Undersampling];del_exmples[Methods that Select Examples to Delete]--edited_nn[Edited Nearest Neighbors Rule for Undersampling];undersampling_algo[Undersampling Algorithms for Imbalanced Classification]--comb[Methods that Select Examples to Delete];comb[Methods that Select Examples to Delete]--one_side[One-Sided Selection for Undersampling];comb[Methods that Select Examples to Delete]--nc[Neighborhood Cleaning Rule for Undersampling];Undersampling Algorithms for Imbalanced Classification" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://taharostami.github.io/posts/machine-learning-notes/" /><meta property="article:section" content="posts" />
-
-
-
-<title>Machine Learning Notes | Taha Rostami</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.eacdd8a032b8d8235da73fc619c05c438feb17b4b2c5f1fa0a2dc66f27c2366b.css" integrity="sha256-6s3YoDK42CNdpz/GGcBcQ4/rF7SyxfH6Ci3GbyfCNms=" crossorigin="anonymous">
-  <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.19cc247b79751889811451c87c2d21bca66c7652b0bf12e482a7d6908d6ffc94.js" integrity="sha256-Gcwke3l1GImBFFHIfC0hvKZsdlKwvxLkgqfWkI1v/JQ=" crossorigin="anonymous"></script>
-<!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
-</head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
-        
-  <nav>
-<h2 class="book-brand">
-  <a href="/"><img src="/logo.png" alt="Logo" /><span>Taha Rostami</span>
-  </a>
-</h2>
-
-
-<div class="book-search">
-  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
-  <div class="book-search-spinner hidden"></div>
-  <ul id="book-search-results"></ul>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="http://taharostami.github.io/docs/selected-chess-games/" class="">Selcted Chess Games</a>
-  
-
-          
-  <ul>
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="http://taharostami.github.io/docs/selected-projects/" class="">Selcted Projects</a>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="http://taharostami.github.io/docs/selected-projects/academic/" class="">Academic</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="http://taharostami.github.io/docs/selected-projects/others/" class="">Others</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-  </ul>
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/" >
-        Blog
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-  <label for="menu-control">
-    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
-  </label>
-
-  <strong>Machine Learning Notes</strong>
-
-  <label for="toc-control">
-    
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-    
-  </label>
-</div>
-
-
-  
-  <aside class="hidden clearfix">
-    
-  
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#knowledge-base">Knowledge Base</a></li>
-    <li><a href="#evaluation-metrics-for-imbalanced-classification">Evaluation Metrics for Imbalanced Classification</a></li>
-    <li><a href="#undersampling-for-imbalanced-classification">Undersampling for Imbalanced Classification</a></li>
-    <li><a href="#notes-about-smote-oversamplinghttpsmachinelearningmasterycomsmote-oversampling-for-imbalanced-classification"><a href="https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/">Notes About SMOTE Oversampling</a></a>
-      <ul>
-        <li><a href="#procedure">Procedure</a></li>
-        <li><a href="#how-to-use-it-in-a-effective-manner">How to use it in a effective manner</a></li>
-        <li><a href="#why-can-be-a-effective-technique">Why can be a effective technique</a></li>
-        <li><a href="#when-can-not-be-effective">When can not be effective</a></li>
-      </ul>
-    </li>
-    <li><a href="#random-oversamplinghttpsmachinelearningmasterycomrandom-oversampling-and-undersampling-for-imbalanced-classification"><a href="https://machinelearningmastery.com/random-oversampling-and-undersampling-for-imbalanced-classification/">Random Oversampling</a></a>
-      <ul>
-        <li><a href="#works">Works</a></li>
-        <li><a href="#when-can-be-effective">When can be effective</a></li>
-        <li><a href="#when-can-not-be-effective-and-how-check-it">When can not be effective and How check it</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown">
-  <h1>
-    <a href="/posts/machine-learning-notes/">Machine Learning Notes</a>
-  </h1>
-  
-
-
-  
-  <div>
-    
-      <a href="/categories/mutation-testing/">Mutation Testing</a>, 
-      <a href="/categories/master-thesis/">Master Thesis</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/code-based-mutation-testing/">code-based mutation testing</a>, 
-      <a href="/tags/mutation-testing/">mutation testing</a>, 
-      <a href="/tags/mutation-analysis/">mutation analysis</a>, 
-      <a href="/tags/fault-revealing-mutants/">Fault-revealing mutants</a>, 
-      <a href="/tags/farm/">FaRM</a>
-  </div>
-  
-
-
-
-<h2 id="knowledge-base">
-  Knowledge Base
-  <a class="anchor" href="#knowledge-base">#</a>
-</h2>
-<h2 id="evaluation-metrics-for-imbalanced-classification">
-  Evaluation Metrics for Imbalanced Classification
-  <a class="anchor" href="#evaluation-metrics-for-imbalanced-classification">#</a>
-</h2>
-<p>
-
-<script src="/mermaid.min.js"></script>
-
-  <script>mermaid.initialize({
-  "flowchart": {
-    "useMaxWidth":true
-  },
-  "theme": "default"
-}
-)</script>
-
-
-
-
-<p class="mermaid">
-graph LR;
-    metric[metrics]-->thr[Threshold Metrics];
-    thr[Threshold Metrics]-->bl[Accuracy, Error];
-    thr[Threshold Metrics]-->imbl[Sensitivity,  Specificity, G-Mean ];
-    thr[Threshold Metrics]-->precrecall[Precision,  Recall, F-Measure, Fbeta-Measure ];
-
-    metric[metrics]-->rnk[Ranking Metrics];
-    rnk[Ranking Metrics]-->met[ROC Curve, ROC AUC, PR AUC];
-
-    metric[metrics]-->pr[Probability Metrics.];
-    pr[Probability Metrics.]-->met2[cross-entropy, LogLoss, BrierScore, BrierSkillScore];
-</p>
-
-<em><a href="https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/">Tour of Evaluation Metrics for Imbalanced Classification</a></em></p>
-<h2 id="undersampling-for-imbalanced-classification">
-  Undersampling for Imbalanced Classification
-  <a class="anchor" href="#undersampling-for-imbalanced-classification">#</a>
-</h2>
-<p>
-
-<p class="mermaid">
-graph LR;
-    undersampling_algo[Undersampling Algorithms for Imbalanced Classification]-->keep_exmples[Methods that Select Examples to Keep];
-    keep_exmples[Methods that Select Examples to Keep]-->near_miss[Near Miss Undersampling];
-    keep_exmples[Methods that Select Examples to Keep]-->cnn[Condensed Nearest Neighbor Rule for Undersampling];
-
-    undersampling_algo[Undersampling Algorithms for Imbalanced Classification]-->del_exmples[Methods that Select Examples to Delete];
-    del_exmples[Methods that Select Examples to Delete]-->tomek_links[Tomek Links for Undersampling];
-    del_exmples[Methods that Select Examples to Delete]-->edited_nn[Edited Nearest Neighbors Rule for Undersampling];
-
-    undersampling_algo[Undersampling Algorithms for Imbalanced Classification]-->comb[Methods that Select Examples to Delete];
-    comb[Methods that Select Examples to Delete]-->one_side[One-Sided Selection for Undersampling];
-    comb[Methods that Select Examples to Delete]-->nc[Neighborhood Cleaning Rule for Undersampling];
-</p>
-
-<em><a href="https://machinelearningmastery.com/undersampling-algorithms-for-imbalanced-classification/">Undersampling Algorithms for Imbalanced Classification</a></em></p>
-<h2 id="notes-about-smote-oversamplinghttpsmachinelearningmasterycomsmote-oversampling-for-imbalanced-classification">
-  <a href="https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/">Notes About SMOTE Oversampling</a>
-  <a class="anchor" href="#notes-about-smote-oversamplinghttpsmachinelearningmasterycomsmote-oversampling-for-imbalanced-classification">#</a>
-</h2>
-<h3 id="procedure">
-  Procedure
-  <a class="anchor" href="#procedure">#</a>
-</h3>
-<p>SMOTE first selects a minority class instance a at random and finds its k nearest minority class neighbors. The synthetic instance is then created by choosing one of the k nearest neighbors b at random and connecting a and b to form a line segment in the feature space. The synthetic instances are generated as a convex combination of the two chosen instances a and b.</p>
-<h3 id="how-to-use-it-in-a-effective-manner">
-  How to use it in a effective manner
-  <a class="anchor" href="#how-to-use-it-in-a-effective-manner">#</a>
-</h3>
-<p>This procedure can be used to create as many synthetic examples for the minority class as are required. As described in the paper, it suggests first using random undersampling to trim the number of examples in the majority class, then use SMOTE to oversample the minority class to balance the class distribution.</p>
-<h3 id="why-can-be-a-effective-technique">
-  Why can be a effective technique
-  <a class="anchor" href="#why-can-be-a-effective-technique">#</a>
-</h3>
-<p>The approach is effective because new synthetic examples from the minority class are created that are plausible, that is, are relatively close in feature space to existing examples from the minority class.</p>
-<h3 id="when-can-not-be-effective">
-  When can not be effective
-  <a class="anchor" href="#when-can-not-be-effective">#</a>
-</h3>
-<p>The approach is effective because new synthetic examples from the minority class are created that are plausible, that is, are relatively close in feature space to existing examples from the minority class.</p>
-<h2 id="random-oversamplinghttpsmachinelearningmasterycomrandom-oversampling-and-undersampling-for-imbalanced-classification">
-  <a href="https://machinelearningmastery.com/random-oversampling-and-undersampling-for-imbalanced-classification/">Random Oversampling</a>
-  <a class="anchor" href="#random-oversamplinghttpsmachinelearningmasterycomrandom-oversampling-and-undersampling-for-imbalanced-classification">#</a>
-</h2>
-<h3 id="works">
-  Works
-  <a class="anchor" href="#works">#</a>
-</h3>
-<p>Random oversampling involves randomly duplicating examples from the minority class and adding them to the training dataset.</p>
-<p>Examples from the training dataset are selected randomly with replacement. This means that examples from the minority class can be chosen and added to the new “more balanced” training dataset multiple times; they are selected from the original training dataset, added to the new training dataset, and then returned or “replaced” in the original dataset, allowing them to be selected again.</p>
-<h3 id="when-can-be-effective">
-  When can be effective
-  <a class="anchor" href="#when-can-be-effective">#</a>
-</h3>
-<p>This technique can be effective for those machine learning algorithms that are affected by a skewed distribution and where multiple duplicate examples for a given class can influence the fit of the model. This might include algorithms that iteratively learn coefficients, like artificial neural networks that use stochastic gradient descent. It can also affect models that seek good splits of the data, such as support vector machines and decision trees.</p>
-<h3 id="when-can-not-be-effective-and-how-check-it">
-  When can not be effective and How check it
-  <a class="anchor" href="#when-can-not-be-effective-and-how-check-it">#</a>
-</h3>
-<p>It might be useful to tune the target class distribution. In some cases, seeking a balanced distribution for a severely imbalanced dataset can cause affected algorithms to overfit the minority class, leading to increased generalization error. The effect can be better performance on the training dataset, but worse performance on the holdout or test dataset.</p>
-<p>As such, to gain insight into the impact of the method, it is a good idea to monitor the performance on both train and test datasets after oversampling and compare the results to the same algorithm on the original dataset.</p>
-<p>The increase in the number of examples for the minority class, especially if the class skew was severe, can also result in a marked increase in the computational cost when fitting the model, especially considering the model is seeing the same examples in the training dataset again and again.</p>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
-  <div class="book-comments">
-
-</div>
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
-
-    
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#knowledge-base">Knowledge Base</a></li>
-    <li><a href="#evaluation-metrics-for-imbalanced-classification">Evaluation Metrics for Imbalanced Classification</a></li>
-    <li><a href="#undersampling-for-imbalanced-classification">Undersampling for Imbalanced Classification</a></li>
-    <li><a href="#notes-about-smote-oversamplinghttpsmachinelearningmasterycomsmote-oversampling-for-imbalanced-classification"><a href="https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/">Notes About SMOTE Oversampling</a></a>
-      <ul>
-        <li><a href="#procedure">Procedure</a></li>
-        <li><a href="#how-to-use-it-in-a-effective-manner">How to use it in a effective manner</a></li>
-        <li><a href="#why-can-be-a-effective-technique">Why can be a effective technique</a></li>
-        <li><a href="#when-can-not-be-effective">When can not be effective</a></li>
-      </ul>
-    </li>
-    <li><a href="#random-oversamplinghttpsmachinelearningmasterycomrandom-oversampling-and-undersampling-for-imbalanced-classification"><a href="https://machinelearningmastery.com/random-oversampling-and-undersampling-for-imbalanced-classification/">Random Oversampling</a></a>
-      <ul>
-        <li><a href="#works">Works</a></li>
-        <li><a href="#when-can-be-effective">When can be effective</a></li>
-        <li><a href="#when-can-not-be-effective-and-how-check-it">When can not be effective and How check it</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
