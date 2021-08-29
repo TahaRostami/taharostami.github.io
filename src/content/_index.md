@@ -16,7 +16,7 @@ was [**Harif**](https://github.com/TahaRostami/Harif) a graph-based automatic co
 
 Before starting my path as a dedicated student, I was a professional chess player in high school. I gained many awards such as [Ranked 3rd place in Asian youth Blitz chess championships, with the Iranian National Team, Southern, Sri Lanka, 2012](http://chess-results.com/tnr76304.aspx?lan=1&art=72).
 
-{{< button href="https://github.com/TahaRostami/TahaRostami.github.io/raw/main/CV.pdf" >}}Download My CV{{< /button >}}
+{{< button href="https://github.com/TahaRostami/TahaRostami.github.io/raw/main/src/static/CV.pdf" >}}Download My CV{{< /button >}}
 
 
 {{< columns >}} <!-- begin columns block -->
