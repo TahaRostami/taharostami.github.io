@@ -1,0 +1,6 @@
+baseURL: http://taharostami.github.io/
+languageCode: en-us
+title: Taha Rostami
+
+params:
+ BookLogo : 'logo.png'
